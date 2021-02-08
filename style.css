@@ -36,3 +36,6 @@ body{
 #singleLetterParent{
     display: none;
 }
+#empty-input{
+    display: none;
+}

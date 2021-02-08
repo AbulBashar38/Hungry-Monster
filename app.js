@@ -5,14 +5,22 @@ function clickAction() {
     document.getElementById('detailsParent').style.display = 'none'
 
     const catchInput = document.getElementById('input-info').value;
+    if (catchInput.length == 0) {
+        document.getElementById('singleLetterParent').style.display = 'none';
+        document.getElementById('searchFood').style.display = 'none';
+        document.getElementById('relatedParent').style.display = 'none';
+        document.getElementById('empty-input').style.display = 'block';
+
+    }
     //when someone search by one letter then it will work.
-    if (catchInput.length == 1) {
+    else if (catchInput.length == 1) {
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${catchInput}`)
             .then(res => res.json())
             .then(data => {
                 document.getElementById('singleLetterParent').style.display = 'block';
                 document.getElementById('searchFood').style.display = 'none';
                 document.getElementById('relatedParent').style.display = 'none';
+                document.getElementById('empty-input').style.display = 'none';
                 showData(data, '1LetterFood');
             })
             .catch(error => {
@@ -27,6 +35,7 @@ function clickAction() {
             .then(data => {
                 document.getElementById('searchFood').style.display = 'block';
                 document.getElementById('singleLetterParent').style.display = 'none';
+                document.getElementById('empty-input').style.display = 'none';
                 showItems(data.meals[0], 'moreLetterFood');
             })
 
@@ -40,8 +49,9 @@ function clickAction() {
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`)
             .then(res => res.json())
             .then(data => {
-                
+
                 document.getElementById('relatedParent').style.display = 'block';
+                document.getElementById('empty-input').style.display = 'none';
                 showData(data, 'relatedItems');
             })
             .catch(error => {
@@ -56,7 +66,7 @@ const showData = (data, divId) => {
         showItems(objectMeals, divId);
     });
 }
-const showItems= (object, divId) => {
+const showItems = (object, divId) => {
     const searchDiv = document.createElement('div');
     const foodPic = object.strMealThumb;
     const foodName = object.strMeal;
@@ -66,7 +76,7 @@ const showItems= (object, divId) => {
     const onlyIngredient3 = object.strIngredient3;
     const onlyIngredient4 = object.strIngredient4;
     const onlyIngredient5 = object.strIngredient5;
-    
+
     const onlyMeasure1 = object.strMeasure1;
     const onlyMeasure2 = object.strMeasure2;
     const onlyMeasure3 = object.strMeasure3;
@@ -77,8 +87,8 @@ const showItems= (object, divId) => {
     const fullIngredient2 = `${onlyMeasure2} ${onlyIngredient2}`
     const fullIngredient3 = `${onlyMeasure3} ${onlyIngredient3}`
     const fullIngredient4 = `${onlyMeasure4} ${onlyIngredient4}`
-    const fullIngredient5 = `${onlyMeasure5} ${onlyIngredient5}` 
-     
+    const fullIngredient5 = `${onlyMeasure5} ${onlyIngredient5}`
+
 
     searchDiv.innerHTML = `<img onclick= "foodDetails('${foodPic}', '${fullIngredient1}', '${fullIngredient2}', '${fullIngredient3}', '${fullIngredient4}', '${fullIngredient5}')" src="${foodPic}">
             <h3>${foodName}</h3>`;
