@@ -81,11 +81,11 @@ function foodDetails (imgUrl, Ingredient1, Ingredient2, Ingredient3, Ingredient4
     <img src="${imgUrl}">
     <h3>Ingredient</h3>
     <ul>
-    <li>${Ingredient1}<li>
-    <li>${Ingredient2}<li>
-    <li>${Ingredient3}<li>
-    <li>${Ingredient4}<li>
-    <li>${Ingredient5}<li>
+    <li>${Ingredient1}</li>
+    <li>${Ingredient2}</li>
+    <li>${Ingredient3}</li>
+    <li>${Ingredient4}</li>
+    <li>${Ingredient5}</li>
     </ul>
     `
     document.getElementById('showDetails').appendChild(detailsDiv);
