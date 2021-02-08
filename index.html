@@ -18,15 +18,27 @@
     <div class="col-md-6 m-auto py-5">
         <div class="input-group mb-3">
             <input id="input-info" type="text" class="form-control" placeholder="search for meal..."
-            aria-label="Recipient's username" aria-describedby="button-addon2">
+                aria-label="Recipient's username" aria-describedby="button-addon2">
             <button onclick="clickAction()" class="btn btn-danger" type="button" id="button-addon2">search</button>
         </div>
     </div>
-    <div id="mainDiv" class="divStyle">
 
+    <div class="row">
+        <div  id="searchFood" class="col-md-6 ">
+            <h1>Your searched food</h1>
+            <div id="mainDiv" class="detailsStyle">
+
+            </div>
+        </div>
+        <div id="detailsParent" class="col-md-6">
+            <h1 style="text-align: center;"> Food Details</h1>
+            <div id="showDetails">
+
+            </div>
+        </div>
     </div>
     <div id="relatedParent">
-        <h1 style="text-align: center;">Related Items</h1>
+        <h1 style="text-align: center;">Related Food Items</h1>
         <div id="relatedItems" class="divStyle">
 
         </div>
