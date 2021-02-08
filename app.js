@@ -1,5 +1,4 @@
 function clickAction() {
-    document.getElementById('searchFood').style.display = 'block';
     document.getElementById('relatedItems').innerHTML = '';
     
     const catchInput = document.getElementById('input-info').value;
@@ -7,22 +6,22 @@ function clickAction() {
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${catchInput}`)
             .then(res => res.json())
             .then(data => {
-                
-                showData(data, 'mainDiv');
+                document.getElementById('singleLetterParent').style.display = 'block';
+                showData(data, '1LetterFood');
             })
             .catch(error => {
-                document.getElementById('mainDiv').innerText = 'Sorry there is no food by this letter'
+                document.getElementById('1LetterFood').innerText = 'Sorry there is no food by this letter'
             })
     }
     else if (catchInput.length > 1) {
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${catchInput}`)
             .then(res => res.json())
             .then(data => {
-                
-                showItems(data.meals[0], 'mainDiv');
+                document.getElementById('searchFood').style.display = 'block';
+                showItems(data.meals[0], 'moreLetterFood');
             })
             .catch(error => {
-                document.getElementById('mainDiv').innerText = 'Sorry there is no food by this name'
+                document.getElementById('moreLetterFood').innerText = 'Sorry there is no food by this name'
             })
 
         const firstLetter = catchInput.charAt(0);

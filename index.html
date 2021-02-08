@@ -15,18 +15,18 @@
 
 <body>
 
-    <div class="col-md-6 m-auto py-5">
+    <section class="col-md-6 m-auto py-5">
         <div class="input-group mb-3">
             <input id="input-info" type="text" class="form-control" placeholder="search for meal..."
                 aria-label="Recipient's username" aria-describedby="button-addon2">
             <button onclick="clickAction()" class="btn btn-danger" type="button" id="button-addon2">search</button>
         </div>
-    </div>
+    </section>
 
-    <div class="row">
-        <div  id="searchFood" class="col-md-6 ">
+    <section class="row">
+        <div id="searchFood" class="col-md-6 ">
             <h1>Your searched food</h1>
-            <div id="mainDiv" class="detailsStyle">
+            <div id="moreLetterFood" class="detailsStyle">
 
             </div>
         </div>
@@ -36,13 +36,19 @@
 
             </div>
         </div>
-    </div>
-    <div id="relatedParent">
+    </section>
+    <section id="singleLetterParent">
+        <h1>Your searched food</h1>
+        <div id="1LetterFood" class="divStyle">
+
+        </div>
+    </section>
+    <section id="relatedParent">
         <h1 style="text-align: center;">Related Food Items</h1>
         <div id="relatedItems" class="divStyle">
 
         </div>
-    </div>
+    </section>
     <script src="app.js"></script>
 </body>
 
