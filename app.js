@@ -1,25 +1,37 @@
 function clickAction() {
     document.getElementById('relatedItems').innerHTML = '';
-    
+    document.getElementById('1LetterFood').innerText = '';
+    document.getElementById('moreLetterFood').innerText = '';
+    document.getElementById('detailsParent').style.display = 'none'
+
     const catchInput = document.getElementById('input-info').value;
+    //when someone search by one letter then it will work.
     if (catchInput.length == 1) {
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${catchInput}`)
             .then(res => res.json())
             .then(data => {
                 document.getElementById('singleLetterParent').style.display = 'block';
+                document.getElementById('searchFood').style.display = 'none';
+                document.getElementById('relatedParent').style.display = 'none';
                 showData(data, '1LetterFood');
             })
             .catch(error => {
                 document.getElementById('1LetterFood').innerText = 'Sorry there is no food by this letter'
             })
     }
+    //When someone searches by food name, it will show the food and below it will show other food according to the first letter of the food name.
+
     else if (catchInput.length > 1) {
         fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${catchInput}`)
             .then(res => res.json())
             .then(data => {
                 document.getElementById('searchFood').style.display = 'block';
+                document.getElementById('singleLetterParent').style.display = 'none';
                 showItems(data.meals[0], 'moreLetterFood');
             })
+
+            //If the food name does not match then a message will be shown but other food will be shown below according to the first letter of the wrong name.
+
             .catch(error => {
                 document.getElementById('moreLetterFood').innerText = 'Sorry there is no food by this name'
             })
@@ -48,6 +60,7 @@ const showItems= (object, divId) => {
     const searchDiv = document.createElement('div');
     const foodPic = object.strMealThumb;
     const foodName = object.strMeal;
+
     const onlyIngredient1 = object.strIngredient1;
     const onlyIngredient2 = object.strIngredient2;
     const onlyIngredient3 = object.strIngredient3;
@@ -72,7 +85,7 @@ const showItems= (object, divId) => {
     const catchDiv = document.getElementById(divId);
     catchDiv.appendChild(searchDiv);
 }
-function foodDetails (imgUrl, Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5){
+const foodDetails = (imgUrl, Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5) => {
     document.getElementById('detailsParent').style.display = 'block'
     document.getElementById('showDetails').innerHTML = '';
     const detailsDiv = document.createElement('div');
