@@ -1,0 +1,17 @@
+.divStyle img{
+    width: 50%;
+}
+.divStyle{
+    margin: 2% 6%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    /* border: red solid 10px; */
+    text-align: center;
+}
+#relatedItems{
+    margin-top: 5%;
+}
+#relatedParent{
+    display: none;
+}
